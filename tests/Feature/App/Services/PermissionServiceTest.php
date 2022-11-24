@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\App\Services;
 
+use App\Exceptions\Authorization\Permission\PermissionAlreadyExistsException;
 use App\Repositories\Permission\PermissionRepositoryImp;
 use App\Services\PermissionService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -55,7 +56,7 @@ class PermissionServiceTest extends TestCase
             $permissionParent
         );
         
-        $this->expectException(\App\Exceptions\Authorization\Permission\PermissionAlreadyExistsException::class);
+        $this->expectException(PermissionAlreadyExistsException::class);
 
         $service->create(
             $name,
