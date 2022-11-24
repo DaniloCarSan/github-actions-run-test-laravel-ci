@@ -87,7 +87,7 @@ class PermissionService
     ): int {
 
         if ($this->repository->findByNameInPermissionRoot($name)) {
-            throw PermissionAlreadyExistsException::name($name);
+            throw \App\Exceptions\Authorization\Permission\PermissionAlreadyExistsException::name($name);
         }
 
         $slug = $this->generateSlug($name, $slug);
